@@ -52,11 +52,12 @@ public class listNotes extends Fragment {
     }
 
     private void initView(View view){
-        LinearLayout list_note_body = (LinearLayout) findViewById(R.id.list_note_body);
+        LinearLayout list_note_body = (LinearLayout) view;
         Iterator<Note> it = notesList. iterator() ;
         while(it.hasNext()) {
             Note note = it.next();
-            HelperNoteView.getRowNoteFromListView(note,view.getContext());
+            View rowNoteView = HelperNoteView.getRowNoteFromListView(note,view.getContext());
+            list_note_body.addView(rowNoteView);
         }
     }
 }

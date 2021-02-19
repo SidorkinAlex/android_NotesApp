@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_note_list"
+        android:name="my.notesapp.listNotes"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

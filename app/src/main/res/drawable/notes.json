@@ -1,8 +1,4 @@
-<resources>
-    <string name="app_name">MyNotesApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="notes_mock">[
+[
   {
     "id": "e867da40-708c-11eb-9439-0242ac130002",
     "time": 1613503674,
@@ -63,5 +59,4 @@
     "title": "Заметка 1",
     "description": "Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции позволяет оценить значение модели развития. Таким образом новая модель организационной деятельности способствует подготовки и реализации систем массового участия."
   }
-]</string>
-</resources>
+]

@@ -5,7 +5,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:padding">10dp</item>
-        <item name="background">@drawable/list_note_liner</item>
+        <item name="android:background">@drawable/list_note_liner</item>
     </style>
     <style name="NoteListDateTextView">
         <item name="android:layout_width">100dp</item>
@@ -20,6 +20,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingLeft">50dp</item>
         <item name="android:layout_marginStart">10dp</item>
     </style>
 </resources>

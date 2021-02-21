@@ -15,13 +15,7 @@
         android:theme="@style/Theme.MyNotesApp">
         <activity
             android:name=".DetailNoteActivity"
-            android:label="@string/title_activity_detail_note">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:label="@string/title_activity_detail_note"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

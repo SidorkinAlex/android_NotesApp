@@ -1,5 +1,6 @@
 package my.notesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class listNotes extends Fragment {
+public class ListNotes extends Fragment {
     LinkedList<Note> notesList;
 
     @Override
@@ -57,7 +58,19 @@ public class listNotes extends Fragment {
         while(it.hasNext()) {
             Note note = it.next();
             View rowNoteView = HelperNoteView.getRowNoteFromListView(note,view.getContext());
+            rowNoteView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println(" rowNoteView.setOnClickListener onClick");
+                    startDetailNote(note);
+                }
+            });
             list_note_body.addView(rowNoteView);
         }
+    }
+    private void startDetailNote(Note note){
+        Intent intent = new Intent(getActivity(),DetailNoteActivity.class);
+        intent.putExtra(DetailNoteFragment.ARG_INDEX,note);
+        startActivity(intent);
     }
 }

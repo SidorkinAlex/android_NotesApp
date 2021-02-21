@@ -3,11 +3,12 @@ package my.notesapp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Note {
+public class Note implements Serializable {
     private UUID id;
     private Date time;
     private String title;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/DetailNoteLinerMain">
+
+    <TextView
+        android:id="@+id/detail_title"
+        android:text="Заголовок Заметки"
+        style="@style/DetailNoteTitle" />
+
+    <LinearLayout
+        android:id="@+id/buttonDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/detail_menu_button"
+            style="@style/DetailButtonMenu"
+            android:text="@string/nav_button" />
+
+        <TextView
+            android:id="@+id/detail_date_created"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="10dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_note_liner"
+        android:padding="20dp"/>
+</LinearLayout>

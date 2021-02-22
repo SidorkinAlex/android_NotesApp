@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.JsonReader;
 import android.view.LayoutInflater;
@@ -78,26 +80,36 @@ public class ListNotesFragment extends Fragment {
         }
     }
 
-    private void checkOrientation(Note note){
-        if (isLandOrientation){
+    private void checkOrientation(Note note) {
+        if (isLandOrientation) {
             startDetailNoteFragment(note);
         } else {
             startDetailNoteActivity(note);
         }
     }
 
-    private void startDetailNoteFragment(Note note){
+    private void startDetailNoteFragment(Note note) {
         DetailNoteFragment detailNoteFragment = DetailNoteFragment.newInstance(note);
         requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.layout_container_land,detailNoteFragment)
+                .replace(R.id.layout_container_land, detailNoteFragment)
                 .commit();
     }
 
     private void startDetailNoteActivity(Note note) {
-        Intent intent = new Intent(getActivity(), DetailNoteActivity.class);
-        intent.putExtra(DetailNoteFragment.ARG_INDEX, note);
-        startActivity(intent);
+        //Получить менеджер фрагментов
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+
+        //олучаем фрагмент
+        DetailNoteFragment detailNoteFragment = DetailNoteFragment.newInstance(note);
+
+        // Открыть транзакцию
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .replace(R.id.layout_container, detailNoteFragment);
+        //Добавляем транзакцию
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
     }
 }

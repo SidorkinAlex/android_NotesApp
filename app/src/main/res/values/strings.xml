@@ -87,6 +87,7 @@
   <string name="search">поиск</string>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="settings_title">Здесь будет страница настроек</string>
   <string name="about_fragment">Это приложение создано в рамках курса, geekbrains Android 1. Знакомство с платформой, для хранения Заметок.
 \n\n
   Автор приложения: Сидоркин Алексей

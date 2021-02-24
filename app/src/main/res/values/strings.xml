@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyNotesApp</string>
+    <string name="app_name">Заметки</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notes_mock">[
@@ -81,4 +81,10 @@
     ¦
   </string>
     <string name="title_activity_detail_note">DetailViewActivity</string>
+  <string name="Settings">Настройки</string>
+  <string name="addNote">Добавить заметку</string>
+  <string name="About">О программе</string>
+  <string name="search">поиск</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

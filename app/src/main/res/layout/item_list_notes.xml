@@ -1,0 +1,16 @@
+<LinearLayout
+    android:id="@+id/row_note_item"
+    style="@style/NoteListLinerLine"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/date_note_item"
+        style="@style/NoteListDateTextView"
+        tools:text="20.12.2012"/>
+    <TextView
+        android:id="@+id/title_note_item"
+        style="@style/NoteListTitleTextView"
+        tools:text="Название задачи"
+        />
+</LinearLayout>

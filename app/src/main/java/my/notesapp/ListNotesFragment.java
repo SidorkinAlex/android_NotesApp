@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.JsonReader;
 import android.view.LayoutInflater;
@@ -20,13 +22,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 
-public class ListNotesFragment extends Fragment {
-    LinkedList<Note> notesList;
+public class ListNotesFragment extends Fragment implements NotesAdapterCallback {
+    ArrayList<Note> notesList;
     private boolean isLandOrientation;
+    private final NotesAdapter notesAdapter = new NotesAdapter(this);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +42,7 @@ public class ListNotesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        notesAdapter.setNotes(notesList);
         isLandOrientation = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
     }
 
@@ -49,7 +54,7 @@ public class ListNotesFragment extends Fragment {
     }
 
     private void getNotesList() {
-        notesList = new LinkedList<Note>();
+        notesList = new ArrayList<Note>();
         String s = getString(R.string.notes_mock);
         try {
             JSONArray jsonNotesList = new JSONArray(s);
@@ -64,20 +69,9 @@ public class ListNotesFragment extends Fragment {
     }
 
     private void initView(View view) {
-        LinearLayout list_note_body = (LinearLayout) view;
-        Iterator<Note> it = notesList.iterator();
-        while (it.hasNext()) {
-            Note note = it.next();
-            View rowNoteView = HelperNoteView.getRowNoteFromListView(note, view.getContext());
-            rowNoteView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    System.out.println(" rowNoteView.setOnClickListener onClick");
-                    checkOrientation(note);
-                }
-            });
-            list_note_body.addView(rowNoteView);
-        }
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_notes);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setAdapter(notesAdapter);
     }
 
     private void checkOrientation(Note note) {
@@ -110,6 +104,13 @@ public class ListNotesFragment extends Fragment {
         //Добавляем транзакцию
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onItemClicked(Note note) {
+
+        checkOrientation(note);
 
     }
 }

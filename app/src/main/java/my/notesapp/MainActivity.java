@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -42,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Обработка навигационного меню
         NavigationView navigationView = findViewById(R.id.nav_view);
+        MainActivity mainActivity = this;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (HelperRouter.routeActions(id)) {
+                if (HelperRouter.routeActions(id,mainActivity)) {
                     drawer.closeDrawer(GravityCompat.START);
                     return true;
                 }
@@ -86,12 +88,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void initListNotesFragment() {
+    public void initListNotesFragment() {
         // запускаем стартовый фрагмент
         ListNotesFragment listNotesFragment = new ListNotesFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.layout_container, listNotesFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void addFragment(Fragment fragment){
+        //Получить менеджер фрагментов
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Открыть транзакцию
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .add(R.id.layout_container, fragment);
+        //Добавляем транзакцию
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void replaceFragment(Fragment fragment){
+        //Получить менеджер фрагментов
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Открыть транзакцию
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .replace(R.id.layout_container, fragment);
+        //Добавляем транзакцию
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }
